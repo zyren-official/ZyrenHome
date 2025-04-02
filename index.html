@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zyren - Innovatsiya va texnologiya olamiga xush kelibsiz!">
+    <meta name="description" content="Zyren - Welcome to the world of innovation and technology!">
     <title>Zyren</title>
     <style>
         * {
@@ -44,28 +44,48 @@
         }
 
         nav {
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        nav.desktop {
+            padding: 15px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+        }
+
+        nav.mobile {
             position: fixed;
             top: 0;
             right: -300px;
             width: 300px;
             height: 100%;
-            background-color: #fff;
-            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
             transition: right 0.3s ease;
-            z-index: 1000;
         }
 
-        nav.open {
+        nav.mobile.open {
             right: 0;
         }
 
         nav a {
-            display: block;
             color: #0078d4;
             text-decoration: none;
-            padding: 15px 20px;
             font-weight: 600;
-            transition: background-color 0.3s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav.desktop a {
+            display: inline-block;
+            margin: 0 25px;
+            padding: 10px 20px;
+            border-radius: 25px;
+        }
+
+        nav.mobile a {
+            display: block;
+            padding: 15px 20px;
         }
 
         nav a:hover {
@@ -156,9 +176,17 @@
 
         @media (max-width: 768px) {
             .menu-icon { display: block; }
+            nav.desktop { display: none; }
+            nav.mobile { display: block; }
             header h1 { font-size: 2em; }
             .hero h2 { font-size: 1.8em; }
             .hero p { font-size: 1em; }
+        }
+
+        @media (min-width: 769px) {
+            .menu-icon { display: none; }
+            nav.desktop { display: block; }
+            nav.mobile { display: none; }
         }
     </style>
 </head>
@@ -168,37 +196,44 @@
         <div class="menu-icon" onclick="toggleMenu()">☰</div>
     </header>
 
-    <nav id="nav-menu">
-        <a href="#home" data-page="home">Bosh sahifa</a>
-        <a href="#about" data-page="about">Biz haqimizda</a>
-        <a href="#services" data-page="services">Xizmatlar</a>
-        <a href="#contact" data-page="contact">Aloqa</a>
+    <nav class="desktop">
+        <a href="#home" data-page="home">Home</a>
+        <a href="#about" data-page="about">About Us</a>
+        <a href="#services" data-page="services">Services</a>
+        <a href="#contact" data-page="contact">Contact</a>
+    </nav>
+
+    <nav class="mobile" id="nav-menu">
+        <a href="#home" data-page="home">Home</a>
+        <a href="#about" data-page="about">About Us</a>
+        <a href="#services" data-page="services">Services</a>
+        <a href="#contact" data-page="contact">Contact</a>
     </nav>
 
     <div id="home" class="page hero active">
-        <h2>Kelajakni bugundan kashf eting</h2>
-        <p>Zyren bilan innovatsiya va texnologiyaning yangi ufqlarini oching.</p>
-        <a href="#services" class="btn" data-page="services">Xizmatlarni ko‘rish</a>
+        <h2>Discover the Future Today</h2>
+        <p>Unlock new horizons of innovation and technology with Zyren.</p>
+        <a href="#services" class="btn" data-page="services">View Services</a>
     </div>
 
     <div id="about" class="page">
-        <h2>Biz haqimizda</h2>
-        <p>Zyren — bu zamonaviy texnologiyalar va ijodkorlikni birlashtirgan platforma. Bizning maqsadimiz — dunyoni yaxshilash uchun innovatsion yechimlar yaratish.</p>
+        <h2>About Us</h2>
+        <p>Zyren is a platform that combines modern technology and creativity. Our goal is to create innovative solutions to improve the world.</p>
     </div>
 
     <div id="services" class="page">
-        <h2>Xizmatlar</h2>
-        <p>Biz veb-saytlar ishlab chiqish, sun’iy intellekt yechimlari va raqamli transformatsiya xizmatlarini taklif qilamiz.</p>
-        <a href="#contact" class="btn" data-page="contact">Biz bilan bog‘laning</a>
+        <h2>Services</h2>
+        <p>We offer web development, artificial intelligence solutions, and digital transformation services.</p>
+        <a href="#contact" class="btn" data-page="contact">Contact Us</a>
     </div>
 
     <div id="contact" class="page">
-        <h2>Aloqa</h2>
-        <p>Biz bilan info@zyren.com orqali bog‘laning yoki +998 99 123-45-67 raqamiga qo‘ng‘iroq qiling.</p>
+        <h2>Contact</h2>
+        <p>Reach us at info@zyren.com or call us at +998 99 123-45-67.</p>
     </div>
 
     <footer>
-        <p>© 2025 Zyren. Barcha huquqlar himoyalangan.</p>
+        <p>© 2025 Zyren. All rights reserved.</p>
     </footer>
 
     <script>
@@ -217,7 +252,7 @@
                     page.classList.add('active');
                 }
             });
-            navMenu.classList.remove('open'); // Tugma bosilganda menyuni yopish
+            navMenu.classList.remove('open'); // Close menu on mobile after clicking
         }
 
         links.forEach(link => {
@@ -230,7 +265,7 @@
             });
         });
 
-        // Birinchi sahifa faol bo‘lib ochiladi
+        // Open the home page by default
         showPage('home');
     </script>
 </body>
