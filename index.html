@@ -23,34 +23,49 @@
         header {
             background: linear-gradient(135deg, #0078d4, #00c4b4);
             color: white;
-            padding: 40px 20px;
+            padding: 20px;
             text-align: center;
             position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
 
         header h1 {
-            font-size: 3em;
+            font-size: 2.5em;
             animation: fadeIn 1s ease-in;
         }
 
+        .menu-icon {
+            font-size: 2em;
+            cursor: pointer;
+            padding: 10px;
+            display: none;
+        }
+
         nav {
-            background-color: #fff;
-            padding: 15px;
-            text-align: center;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            position: sticky;
+            position: fixed;
             top: 0;
-            z-index: 100;
+            right: -300px;
+            width: 300px;
+            height: 100%;
+            background-color: #fff;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
+            transition: right 0.3s ease;
+            z-index: 1000;
+        }
+
+        nav.open {
+            right: 0;
         }
 
         nav a {
+            display: block;
             color: #0078d4;
             text-decoration: none;
-            margin: 0 25px;
+            padding: 15px 20px;
             font-weight: 600;
-            padding: 10px 20px;
-            border-radius: 25px;
-            transition: all 0.3s ease;
+            transition: background-color 0.3s ease;
         }
 
         nav a:hover {
@@ -60,7 +75,7 @@
 
         .page {
             display: none;
-            padding: 60px 20px;
+            padding: 80px 20px;
             max-width: 1000px;
             margin: 0 auto;
             text-align: center;
@@ -126,8 +141,6 @@
             color: white;
             text-align: center;
             padding: 20px;
-            position: relative;
-            bottom: 0;
             width: 100%;
         }
 
@@ -141,9 +154,9 @@
             to { transform: translateY(0); opacity: 1; }
         }
 
-        @media (max-width: 600px) {
+        @media (max-width: 768px) {
+            .menu-icon { display: block; }
             header h1 { font-size: 2em; }
-            nav a { display: block; margin: 10px 0; }
             .hero h2 { font-size: 1.8em; }
             .hero p { font-size: 1em; }
         }
@@ -152,9 +165,10 @@
 <body>
     <header>
         <h1>Zyren</h1>
+        <div class="menu-icon" onclick="toggleMenu()">☰</div>
     </header>
 
-    <nav>
+    <nav id="nav-menu">
         <a href="#home" data-page="home">Bosh sahifa</a>
         <a href="#about" data-page="about">Biz haqimizda</a>
         <a href="#services" data-page="services">Xizmatlar</a>
@@ -188,8 +202,13 @@
     </footer>
 
     <script>
+        const navMenu = document.getElementById('nav-menu');
         const links = document.querySelectorAll('nav a, .btn');
         const pages = document.querySelectorAll('.page');
+
+        function toggleMenu() {
+            navMenu.classList.toggle('open');
+        }
 
         function showPage(pageId) {
             pages.forEach(page => {
@@ -198,6 +217,7 @@
                     page.classList.add('active');
                 }
             });
+            navMenu.classList.remove('open'); // Tugma bosilganda menyuni yopish
         }
 
         links.forEach(link => {
