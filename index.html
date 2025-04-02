@@ -10,91 +10,142 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
         }
 
         body {
-            background-color: #f5f5f5;
+            background-color: #f8f9fa;
             color: #1a1a1a;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         header {
-            background-color: #0078d4;
+            background: linear-gradient(135deg, #0078d4, #00c4b4);
             color: white;
-            padding: 20px;
+            padding: 40px 20px;
             text-align: center;
+            position: relative;
         }
 
         header h1 {
-            font-size: 2.5em;
+            font-size: 3em;
+            animation: fadeIn 1s ease-in;
         }
 
         nav {
             background-color: #fff;
             padding: 15px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         nav a {
             color: #0078d4;
             text-decoration: none;
-            margin: 0 20px;
-            font-weight: bold;
+            margin: 0 25px;
+            font-weight: 600;
+            padding: 10px 20px;
+            border-radius: 25px;
+            transition: all 0.3s ease;
         }
 
         nav a:hover {
-            text-decoration: underline;
+            background-color: #0078d4;
+            color: white;
+        }
+
+        .page {
+            display: none;
+            padding: 60px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+            animation: slideIn 0.5s ease;
+        }
+
+        .page.active {
+            display: block;
         }
 
         .hero {
+            background: url('https://source.unsplash.com/random/1600x900?technology') no-repeat center/cover;
+            color: white;
+            padding: 100px 20px;
             text-align: center;
-            padding: 60px 20px;
-            background-color: #e6f0fa;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h2, .hero p {
+            position: relative;
+            z-index: 1;
         }
 
         .hero h2 {
-            font-size: 2em;
+            font-size: 2.5em;
             margin-bottom: 20px;
         }
 
         .hero p {
-            font-size: 1.2em;
-            max-width: 600px;
+            font-size: 1.3em;
+            max-width: 700px;
             margin: 0 auto;
         }
 
-        .content {
-            max-width: 800px;
-            margin: 40px auto;
-            padding: 20px;
-            text-align: center;
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: #0078d4;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            margin-top: 20px;
+            transition: transform 0.3s ease, background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #005ea2;
+            transform: scale(1.05);
         }
 
         footer {
-            background-color: #0078d4;
+            background: linear-gradient(135deg, #0078d4, #00c4b4);
             color: white;
             text-align: center;
-            padding: 10px;
-            position: fixed;
+            padding: 20px;
+            position: relative;
             bottom: 0;
             width: 100%;
         }
 
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
         @media (max-width: 600px) {
-            header h1 {
-                font-size: 1.8em;
-            }
-
-            nav a {
-                display: block;
-                margin: 10px 0;
-            }
-
-            .hero h2 {
-                font-size: 1.5em;
-            }
+            header h1 { font-size: 2em; }
+            nav a { display: block; margin: 10px 0; }
+            .hero h2 { font-size: 1.8em; }
+            .hero p { font-size: 1em; }
         }
     </style>
 </head>
@@ -104,34 +155,63 @@
     </header>
 
     <nav>
-        <a href="#home">Bosh sahifa</a>
-        <a href="#about">Biz haqimizda</a>
-        <a href="#services">Xizmatlar</a>
-        <a href="#contact">Aloqa</a>
+        <a href="#home" data-page="home">Bosh sahifa</a>
+        <a href="#about" data-page="about">Biz haqimizda</a>
+        <a href="#services" data-page="services">Xizmatlar</a>
+        <a href="#contact" data-page="contact">Aloqa</a>
     </nav>
 
-    <section class="hero">
-        <h2>Innovatsiya olamiga xush kelibsiz!</h2>
-        <p>Zyren bilan kelajakni bugundan kashf eting. Biz texnologiya va ijodkorlikni birlashtiramiz.</p>
-    </section>
+    <div id="home" class="page hero active">
+        <h2>Kelajakni bugundan kashf eting</h2>
+        <p>Zyren bilan innovatsiya va texnologiyaning yangi ufqlarini oching.</p>
+        <a href="#services" class="btn" data-page="services">Xizmatlarni ko‘rish</a>
+    </div>
 
-    <section class="content">
-        <h3>Biz nima qilamiz?</h3>
-        <p>Biz zamonaviy texnologiyalar yordamida foydalanuvchilar uchun qulay va samarali yechimlar yaratamiz. Zyren — bu sizning kelajakdagi hamkoringiz.</p>
-    </section>
+    <div id="about" class="page">
+        <h2>Biz haqimizda</h2>
+        <p>Zyren — bu zamonaviy texnologiyalar va ijodkorlikni birlashtirgan platforma. Bizning maqsadimiz — dunyoni yaxshilash uchun innovatsion yechimlar yaratish.</p>
+    </div>
+
+    <div id="services" class="page">
+        <h2>Xizmatlar</h2>
+        <p>Biz veb-saytlar ishlab chiqish, sun’iy intellekt yechimlari va raqamli transformatsiya xizmatlarini taklif qilamiz.</p>
+        <a href="#contact" class="btn" data-page="contact">Biz bilan bog‘laning</a>
+    </div>
+
+    <div id="contact" class="page">
+        <h2>Aloqa</h2>
+        <p>Biz bilan info@zyren.com orqali bog‘laning yoki +998 99 123-45-67 raqamiga qo‘ng‘iroq qiling.</p>
+    </div>
 
     <footer>
-        <p>&copy; 2025 Zyren. Barcha huquqlar himoyalangan.</p>
+        <p>© 2025 Zyren. Barcha huquqlar himoyalangan.</p>
     </footer>
 
     <script>
-        // Oddiy interaktivlik uchun JavaScript
-        document.querySelectorAll('nav a').forEach(link => {
+        const links = document.querySelectorAll('nav a, .btn');
+        const pages = document.querySelectorAll('.page');
+
+        function showPage(pageId) {
+            pages.forEach(page => {
+                page.classList.remove('active');
+                if (page.id === pageId) {
+                    page.classList.add('active');
+                }
+            });
+        }
+
+        links.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                alert('Bu havola hozircha faol emas!');
+                const pageId = link.getAttribute('data-page');
+                if (pageId) {
+                    showPage(pageId);
+                }
             });
         });
+
+        // Birinchi sahifa faol bo‘lib ochiladi
+        showPage('home');
     </script>
 </body>
 </html>
