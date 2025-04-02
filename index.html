@@ -3,135 +3,154 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Zyren - Welcome to the world of innovation and technology!">
-    <title>Zyren</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="style.css">
+    <title>Zyren - Portfolio</title>
 </head>
 <body>
-    <header>
-        <h1>Zyren</h1>
-        <div class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
+    <!-- HEADER SECTION -->
+    <header class="header">
+        <a href="#home" class="logo">ZYREN</a>
+        <i class='bx bx-menu' id="menu-icon"></i>
+        <nav class="navbar">
+            <a href="#home">Bosh sahifa</a>
+            <a href="#about">Men haqimda</a>
+            <a href="#services">Xizmatlar</a>
+            <a href="#testimonials">Fikrlar</a>
+            <a href="#contact">Bog‘lanish</a>
+        </nav>
     </header>
 
-    <!-- // Navigatsiya tugmalari (kompyuter uchun) -->
-    <nav class="desktop">
-        <a href="#home" data-page="home"><i class="fas fa-home"></i> Home</a>
-        <a href="#about" data-page="about"><i class="fas fa-info-circle"></i> About Us</a>
-        <a href="#services" data-page="services"><i class="fas fa-cogs"></i> Services</a>
-        <a href="#settings" data-page="settings"><i class="fas fa-sliders-h"></i> Settings</a>
-        <a href="#contact" data-page="contact"><i class="fas fa-envelope"></i> Contact</a>
-    </nav>
-
-    <!-- // Mobil menyu (drawer) -->
-    <nav class="mobile" id="nav-menu">
-        <a href="#home" data-page="home"><i class="fas fa-home"></i> Home</a>
-        <a href="#about" data-page="about"><i class="fas fa-info-circle"></i> About Us</a>
-        <a href="#services" data-page="services"><i class="fas fa-cogs"></i> Services</a>
-        <a href="#settings" data-page="settings"><i class="fas fa-sliders-h"></i> Settings</a>
-        <a href="#contact" data-page="contact"><i class="fas fa-envelope"></i> Contact</a>
-    </nav>
-
-    <!-- // Home sahifasi -->
-    <div id="home" class="page hero active">
-        <div class="hero-content">
-            <h2>Discover the Future Today</h2>
-            <p>Unlock new horizons of innovation and technology with Zyren.</p>
-            <a href="#services" class="btn" data-page="settings" onclick="trackButtonClick('View Services')">View Services</a>
-            <button class="btn" onclick="toggleDarkTheme()">Dark Theme</button>
+    <!-- Home Section -->
+    <section id="home" class="home">
+        <div class="home-content">
+            <h3>Salom!</h3>
+            <h1>ZYREN</h1>
+            <h3> <span class="multiple-text"></span></h3>
+            <p>Men veb-dasturlash, dizayn va blockchain sohasida tajribaga ega mutaxassis sifatida sizning loyihalaringizni yuqori darajada amalga oshiraman.</p>
+            <div class="social-media">
+                <a href="#"><i class='bx bxl-linkedin'></i></a>
+                <a href="#"><i class='bx bxl-github'></i></a>
+                <a href="#"><i class='bx bxl-twitter'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+            </div>
+            <a href="#" class="btn">Rezyumeni yuklab olish</a>
         </div>
-    </div>
+    </section>
 
-    <!-- // About Us sahifasi -->
-    <div id="about" class="page">
-        <h2>About Us</h2>
-        <p>Zyren is a platform that combines modern technology and creativity to deliver cutting-edge solutions.</p>
-        <div class="card-container">
-            <div class="card" onmouseover="highlightCard(this)" onmouseout="resetCard(this)">
-                <i class="fas fa-rocket"></i>
-                <h3>Innovation</h3>
-                <p>Pushing the boundaries of what's possible.</p>
-            </div>
-            <div class="card" onmouseover="highlightCard(this)" onmouseout="resetCard(this)">
-                <i class="fas fa-users"></i>
-                <h3>Teamwork</h3>
-                <p>Collaborating to achieve greatness.</p>
-            </div>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="about-content">
+            <h2 class="heading">Men <span>haqimda</span></h2>
+            <h3>Men <span>Veb-dasturchi</span> va <span>Dizayner</span>man</h3>
+            <p>Mening maqsadim – mijozlar uchun qulay va samarali veb-saytlar yaratish. Har bir loyiha mening ijodim va tajribamning bir qismidir.</p>
+            <a href="#" class="btn">Batafsil</a>
         </div>
-        <button class="btn" onclick="increaseFontSize()">Increase Font</button>
-        <button class="btn" onclick="resetSettings()">Reset Settings</button>
-    </div>
+        <div class="about-img">
+            <img src="assets/about.jpeg" alt="">
+        </div>
+    </section>
 
-    <!-- // Services sahifasi -->
-    <div id="services" class="page">
-        <h2>Services</h2>
-        <div class="service-container">
-            <div class="service-item" onclick="expandService(this)">
-                <i class="fas fa-code"></i>
-                <h3>Web Development</h3>
-                <p>Building responsive and modern websites.</p>
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <h2 class="heading">Mening <span>Xizmatlarim</span></h2>
+        <div class="services-container">
+            <div class="services-box">
+                <i class='bx bx-code-alt'></i>
+                <h3>Veb-dasturlash</h3>
+                <p>Zamonaviy texnologiyalar yordamida tez va ishonchli veb-saytlar yarataman.</p>
+                <a href="#" class="btn">Batafsil</a>
             </div>
-            <div class="service-item" onclick="expandService(this)">
-                <i class="fas fa-brain"></i>
-                <h3>AI Solutions</h3>
-                <p>Harnessing the power of artificial intelligence.</p>
+            <div class="services-box">
+                <i class='bx bx-paint'></i>
+                <h3>UI/UX Dizayn</h3>
+                <p>Foydalanuvchilar uchun qulay va chiroyli interfeyslar ishlab chiqaman.</p>
+                <a href="#" class="btn">Batafsil</a>
             </div>
-            <div class="service-item" onclick="expandService(this)">
-                <i class="fas fa-digital-tachograph"></i>
-                <h3>Digital Transformation</h3>
-                <p>Transforming businesses with technology.</p>
+            <div class="services-box">
+                <i class='bx bx-block'></i>
+                <h3>Blockchain</h3>
+                <p>Xavfsiz va shaffof blockchain yechimlarini taklif qilaman.</p>
+                <a href="#" class="btn">Batafsil</a>
             </div>
         </div>
-        <a href="#contact" class="btn" data-page="contact" onclick="trackButtonClick('Contact Us')">Contact Us</a>
-        <button class="btn" onclick="toggleServiceFilter()">Filter Services</button>
-    </div>
+    </section>
 
-    <!-- // Settings sahifasi (Portfolio o‘rniga) -->
-    <div id="settings" class="page">
-        <h2>Settings</h2>
-        <p>Customize your Zyren experience.</p>
-        <div class="settings-container">
-            <div class="setting-item" onclick="toggleSetting(this)">
-                <i class="fas fa-palette"></i>
-                <h3>Theme</h3>
-                <p>Switch between light and dark modes.</p>
-            </div>
-            <div class="setting-item" onclick="toggleSetting(this)">
-                <i class="fas fa-font"></i>
-                <h3>Font Size</h3>
-                <p>Adjust text size for better readability.</p>
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="testimonials-box">
+            <h2 class="heading">Mijozlar <span>Fikrlari</span></h2>
+            <div class="wrapper">
+                <div class="testimonial-item">
+                    <img src="assets/01.jpeg" alt="">
+                    <h2>Aziza</h2>
+                    <div class="rating">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                    </div>
+                    <p>Zyren bilan ishlash ajoyib tajriba bo‘ldi, loyiha vaqtida yetkazib berildi!</p>
+                </div>
+                <div class="testimonial-item">
+                    <img src="assets/02.jpeg" alt="">
+                    <h2>Madina</h2>
+                    <div class="rating">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                    </div>
+                    <p>Dizayn va funksionallik jihatidan ajoyib ish!</p>
+                </div>
+                <div class="testimonial-item">
+                    <img src="assets/03.jpeg" alt="">
+                    <h2>Anisa</h2>
+                    <div class="rating">
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                        <i class='bx bxs-star'></i>
+                    </div>
+                    <p>Professional yondashuv va yuqori sifat!</p>
+                </div>
             </div>
         </div>
-        <button class="btn" onclick="saveSettings()">Save Settings</button>
-        <button class="btn" onclick="toggleAnimations()">Toggle Animations</button>
-    </div>
+    </section>
 
-    <!-- // Contact sahifasi -->
-    <div id="contact" class="page">
-        <h2>Contact</h2>
-        <!-- // Bu yerga email linkni qo‘yishingiz mumkin -->
-        <p>Reach us at <a href="https://t.me/Zyren_official">Zyren Admin</a> or call us at <span id="phone-number">+998 93 317 25 07</span>.</p>
-        <form class="contact-form" onsubmit="submitForm(event)">
-            <input type="text" placeholder="Your Name" required oninput="validateInput(this)">
-            <input type="email" placeholder="Your Email" required oninput="validateInput(this)">
-            <textarea placeholder="Your Message" required oninput="countCharacters(this)"></textarea>
-            <button type="submit" class="btn">Send Message</button>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <h2 class="heading">Bog‘lanish</h2>
+        <form action="#">
+            <div class="input-box">
+                <input type="text" name="name" placeholder="Ism va familiya">
+                <input type="email" name="email" placeholder="Email manzil">
+            </div>
+            <div class="input-box">
+                <input type="number" name="number" placeholder="Telefon raqami">
+                <input type="text" name="subject" placeholder="Mavzu">
+            </div>
+            <textarea name="message" cols="30" rows="10" placeholder="Xabaringiz"></textarea>
+            <input type="submit" value="Xabar yuborish" class="btn">
         </form>
-        <p id="char-count">0/500</p>
-        <button class="btn" onclick="clearForm()">Clear Form</button>
-    </div>
+    </section>
 
-    <!-- // Footer, ijtimoiy tarmoq linklarini bu yerga qo‘yishingiz mumkin -->
-    <footer>
-        <p>© 2025 Zyren. All rights reserved.</p>
-        <div class="social-links">
-            <a href="https://twitter.com/Sheroz25_07" onclick="trackSocialClick('Twitter')"><i class="fab fa-twitter"></i></a>
-            <a href="https://linkedin.com/in/profile" onclick="trackSocialClick('LinkedIn')"><i class="fab fa-linkedin"></i></a>
-            <a href="https://github.com/profile" onclick="trackSocialClick('GitHub')"><i class="fab fa-github"></i></a>
+    <!-- Footer Section -->
+    <footer class="footer">
+        <div class="social">
+            <a href="#"><i class='bx bxl-linkedin'></i></a>
+            <a href="#"><i class='bx bxl-github'></i></a>
+            <a href="#"><i class='bx bxl-twitter'></i></a>
+            <a href="#"><i class='bx bxl-instagram'></i></a>
         </div>
-        <button class="btn" onclick="toggleFooterVisibility()">Toggle Footer</button>
+        <p class="copyright">
+            © Zyren 2025 - Barcha huquqlar himoyalangan
+        </p>
     </footer>
-
+    <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
