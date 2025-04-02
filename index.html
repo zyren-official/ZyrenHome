@@ -5,267 +5,133 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Zyren - Welcome to the world of innovation and technology!">
     <title>Zyren</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Arial, sans-serif;
-        }
-
-        body {
-            background-color: #f8f9fa;
-            color: #1a1a1a;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-
-        header {
-            background: linear-gradient(135deg, #0078d4, #00c4b4);
-            color: white;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        header h1 {
-            font-size: 2.5em;
-            animation: fadeIn 1s ease-in;
-        }
-
-        .menu-icon {
-            font-size: 2em;
-            cursor: pointer;
-            padding: 10px;
-            display: none;
-        }
-
-        nav {
-            background-color: #fff;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            z-index: 1000;
-        }
-
-        nav.desktop {
-            padding: 15px;
-            text-align: center;
-            position: sticky;
-            top: 0;
-        }
-
-        nav.mobile {
-            position: fixed;
-            top: 0;
-            right: -300px;
-            width: 300px;
-            height: 100%;
-            transition: right 0.3s ease;
-        }
-
-        nav.mobile.open {
-            right: 0;
-        }
-
-        nav a {
-            color: #0078d4;
-            text-decoration: none;
-            font-weight: 600;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
-
-        nav.desktop a {
-            display: inline-block;
-            margin: 0 25px;
-            padding: 10px 20px;
-            border-radius: 25px;
-        }
-
-        nav.mobile a {
-            display: block;
-            padding: 15px 20px;
-        }
-
-        nav a:hover {
-            background-color: #0078d4;
-            color: white;
-        }
-
-        .page {
-            display: none;
-            padding: 80px 20px;
-            max-width: 1000px;
-            margin: 0 auto;
-            text-align: center;
-            animation: slideIn 0.5s ease;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        .hero {
-            background: url('https://source.unsplash.com/random/1600x900?technology') no-repeat center/cover;
-            color: white;
-            padding: 100px 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-        }
-
-        .hero h2, .hero p {
-            position: relative;
-            z-index: 1;
-        }
-
-        .hero h2 {
-            font-size: 2.5em;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 1.3em;
-            max-width: 700px;
-            margin: 0 auto;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            background-color: #0078d4;
-            color: white;
-            text-decoration: none;
-            border-radius: 25px;
-            margin-top: 20px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-
-        .btn:hover {
-            background-color: #005ea2;
-            transform: scale(1.05);
-        }
-
-        footer {
-            background: linear-gradient(135deg, #0078d4, #00c4b4);
-            color: white;
-            text-align: center;
-            padding: 20px;
-            width: 100%;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        @keyframes slideIn {
-            from { transform: translateY(20px); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        @media (max-width: 768px) {
-            .menu-icon { display: block; }
-            nav.desktop { display: none; }
-            nav.mobile { display: block; }
-            header h1 { font-size: 2em; }
-            .hero h2 { font-size: 1.8em; }
-            .hero p { font-size: 1em; }
-        }
-
-        @media (min-width: 769px) {
-            .menu-icon { display: none; }
-            nav.desktop { display: block; }
-            nav.mobile { display: none; }
-        }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
         <h1>Zyren</h1>
-        <div class="menu-icon" onclick="toggleMenu()">☰</div>
+        <div class="menu-icon" onclick="toggleMenu()"><i class="fas fa-bars"></i></div>
     </header>
 
+    <!-- // Navigatsiya tugmalari (kompyuter uchun) -->
     <nav class="desktop">
-        <a href="#home" data-page="home">Home</a>
-        <a href="#about" data-page="about">About Us</a>
-        <a href="#services" data-page="services">Services</a>
-        <a href="#contact" data-page="contact">Contact</a>
+        <a href="#home" data-page="home"><i class="fas fa-home"></i> Home</a>
+        <a href="#about" data-page="about"><i class="fas fa-info-circle"></i> About Us</a>
+        <a href="#services" data-page="services"><i class="fas fa-cogs"></i> Services</a>
+        <a href="#settings" data-page="settings"><i class="fas fa-sliders-h"></i> Settings</a>
+        <a href="#contact" data-page="contact"><i class="fas fa-envelope"></i> Contact</a>
     </nav>
 
+    <!-- // Mobil menyu (drawer) -->
     <nav class="mobile" id="nav-menu">
-        <a href="#home" data-page="home">Home</a>
-        <a href="#about" data-page="about">About Us</a>
-        <a href="#services" data-page="services">Services</a>
-        <a href="#contact" data-page="contact">Contact</a>
+        <a href="#home" data-page="home"><i class="fas fa-home"></i> Home</a>
+        <a href="#about" data-page="about"><i class="fas fa-info-circle"></i> About Us</a>
+        <a href="#services" data-page="services"><i class="fas fa-cogs"></i> Services</a>
+        <a href="#settings" data-page="settings"><i class="fas fa-sliders-h"></i> Settings</a>
+        <a href="#contact" data-page="contact"><i class="fas fa-envelope"></i> Contact</a>
     </nav>
 
+    <!-- // Home sahifasi -->
     <div id="home" class="page hero active">
-        <h2>Discover the Future Today</h2>
-        <p>Unlock new horizons of innovation and technology with Zyren.</p>
+        <div class="hero-content">
+            <h2>Discover the Future Today</h2>
+            <p>Unlock new horizons of innovation and technology with Zyren.</p>
+            <a href="#services" class="btn" data-page="settings" onclick="trackButtonClick('View Services')">View Services</a>
+            <button class="btn" onclick="toggleDarkTheme()">Dark Theme</button>
+        </div>
     </div>
 
+    <!-- // About Us sahifasi -->
     <div id="about" class="page">
         <h2>About Us</h2>
-        <p>Zyren is a platform that combines modern technology and creativity. Our goal is to create innovative solutions to improve the world.</p>
+        <p>Zyren is a platform that combines modern technology and creativity to deliver cutting-edge solutions.</p>
+        <div class="card-container">
+            <div class="card" onmouseover="highlightCard(this)" onmouseout="resetCard(this)">
+                <i class="fas fa-rocket"></i>
+                <h3>Innovation</h3>
+                <p>Pushing the boundaries of what's possible.</p>
+            </div>
+            <div class="card" onmouseover="highlightCard(this)" onmouseout="resetCard(this)">
+                <i class="fas fa-users"></i>
+                <h3>Teamwork</h3>
+                <p>Collaborating to achieve greatness.</p>
+            </div>
+        </div>
+        <button class="btn" onclick="increaseFontSize()">Increase Font</button>
+        <button class="btn" onclick="resetSettings()">Reset Settings</button>
     </div>
 
+    <!-- // Services sahifasi -->
     <div id="services" class="page">
         <h2>Services</h2>
-        <p>We offer web development, artificial intelligence solutions, and digital transformation services.</p>
-        <a href="#contact" class="btn" data-page="contact">Contact Us</a>
+        <div class="service-container">
+            <div class="service-item" onclick="expandService(this)">
+                <i class="fas fa-code"></i>
+                <h3>Web Development</h3>
+                <p>Building responsive and modern websites.</p>
+            </div>
+            <div class="service-item" onclick="expandService(this)">
+                <i class="fas fa-brain"></i>
+                <h3>AI Solutions</h3>
+                <p>Harnessing the power of artificial intelligence.</p>
+            </div>
+            <div class="service-item" onclick="expandService(this)">
+                <i class="fas fa-digital-tachograph"></i>
+                <h3>Digital Transformation</h3>
+                <p>Transforming businesses with technology.</p>
+            </div>
+        </div>
+        <a href="#contact" class="btn" data-page="contact" onclick="trackButtonClick('Contact Us')">Contact Us</a>
+        <button class="btn" onclick="toggleServiceFilter()">Filter Services</button>
     </div>
 
+    <!-- // Settings sahifasi (Portfolio o‘rniga) -->
+    <div id="settings" class="page">
+        <h2>Settings</h2>
+        <p>Customize your Zyren experience.</p>
+        <div class="settings-container">
+            <div class="setting-item" onclick="toggleSetting(this)">
+                <i class="fas fa-palette"></i>
+                <h3>Theme</h3>
+                <p>Switch between light and dark modes.</p>
+            </div>
+            <div class="setting-item" onclick="toggleSetting(this)">
+                <i class="fas fa-font"></i>
+                <h3>Font Size</h3>
+                <p>Adjust text size for better readability.</p>
+            </div>
+        </div>
+        <button class="btn" onclick="saveSettings()">Save Settings</button>
+        <button class="btn" onclick="toggleAnimations()">Toggle Animations</button>
+    </div>
+
+    <!-- // Contact sahifasi -->
     <div id="contact" class="page">
         <h2>Contact</h2>
-        <p>Reach us at info@zyren.com or call us at +998 99 123-45-67.</p>
+        <!-- // Bu yerga email linkni qo‘yishingiz mumkin -->
+        <p>Reach us at <a href="https:/t.me/Zyren_official">Zyren Admin</a> or call us at <span id="phone-number">+998 93 317 25 07</span>.</p>
+        <form class="contact-form" onsubmit="submitForm(event)">
+            <input type="text" placeholder="Your Name" required oninput="validateInput(this)">
+            <input type="email" placeholder="Your Email" required oninput="validateInput(this)">
+            <textarea placeholder="Your Message" required oninput="countCharacters(this)"></textarea>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+        <p id="char-count">0/500</p>
+        <button class="btn" onclick="clearForm()">Clear Form</button>
     </div>
 
+    <!-- // Footer, ijtimoiy tarmoq linklarini bu yerga qo‘yishingiz mumkin -->
     <footer>
         <p>© 2025 Zyren. All rights reserved.</p>
+        <div class="social-links">
+            <a href="https://twitter.com/Sheroz25_07" onclick="trackSocialClick('Twitter')"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com/in/profile" onclick="trackSocialClick('LinkedIn')"><i class="fab fa-linkedin"></i></a>
+            <a href="https://github.com/profile" onclick="trackSocialClick('GitHub')"><i class="fab fa-github"></i></a>
+        </div>
+        <button class="btn" onclick="toggleFooterVisibility()">Toggle Footer</button>
     </footer>
 
-    <script>
-        const navMenu = document.getElementById('nav-menu');
-        const links = document.querySelectorAll('nav a, .btn');
-        const pages = document.querySelectorAll('.page');
-
-        function toggleMenu() {
-            navMenu.classList.toggle('open');
-        }
-
-        function showPage(pageId) {
-            pages.forEach(page => {
-                page.classList.remove('active');
-                if (page.id === pageId) {
-                    page.classList.add('active');
-                }
-            });
-            navMenu.classList.remove('open'); // Close menu on mobile after clicking
-        }
-
-        links.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const pageId = link.getAttribute('data-page');
-                if (pageId) {
-                    showPage(pageId);
-                }
-            });
-        });
-
-        // Open the home page by default
-        showPage('home');
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
