@@ -12,7 +12,7 @@ window.onscroll = () => {
 };
 
 const typed = new Typed('.multiple-text', {
-    strings: ['Veb-dasturchi', 'UI/UX Dizayner', 'Blockchain Mutaxassisi'],
+    strings: ['Veb-dasturchi', 'UI/UX Dizayner'],
     typeSpeed: 100,
     backSpeed: 50,
     backDelay: 1000,
