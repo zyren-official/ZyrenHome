@@ -10,11 +10,11 @@
 }
 
 :root {
-    --bg-color: #f4f7fa;
-    --snd-bg-color: #e8f0fe;
-    --text-color: #1f2a44;
-    --main-color: #4f46e5; /* Zamonaviy ko‘k */
-    --accent-color: #10b981; /* Yashil aksent */
+    --text-color: #ff0303;
+    --main-color: #000000; /* Zamonaviy ko‘k */
+    --accent-color: #00d5ff; /* Yashil aksent */
+    --uzimni-rangim: #ffffff; 
+    --rasmni-rangi: #717171;
 }
 
 html {
@@ -23,8 +23,29 @@ html {
 }
 
 body {
-    background: var(--bg-color);
-    color: var(--text-color);
+    width: 100%;
+    height: 100%;
+  
+    background: #000000;
+    --gap: 5em;
+    --line: 1px;
+    --color: rgba(255, 255, 255, 0.2);
+  
+    background-image: linear-gradient(
+        -90deg,
+        transparent calc(var(--gap) - var(--line)),
+        var(--color) calc(var(--gap) - var(--line) + 1px),
+        var(--color) var(--gap)
+      ),
+      linear-gradient(
+        0deg,
+        transparent calc(var(--gap) - var(--line)),
+        var(--color) calc(var(--gap) - var(--line) + 1px),
+        var(--color) var(--gap)
+      );
+    background-size: var(--gap) var(--gap);
+
+    color: var(--uzimni-rangim);
 }
 
 section {
@@ -43,7 +64,7 @@ section {
     align-items: center;
     justify-content: space-between;
     padding: 2rem 5%;
-    background: linear-gradient(135deg, var(--main-color), #7c3aed);
+    background: linear-gradient(135deg, var(--uzimni-rangim), #7c3aed);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     transition: all 0.5s ease;
 }
@@ -87,7 +108,6 @@ section {
     align-items: center;
     justify-content: center;
     min-height: 100vh;
-    background: url('assets/Profile.jpeg') no-repeat center bottom / cover;
     color: #fff;
     text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
     overflow: hidden;
@@ -104,27 +124,31 @@ section {
     z-index: 1;
 }
 
-.home-content {
-    position: relative;
-    z-index: 2;
-    text-align: center;
-    padding: 2rem;
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 15px;
+.home::before {
+    content: "ZYREN"; /* Orqa fon matni */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20rem; /* Matnning kattaligi */
+    font-weight: 900;
+    color: rgba(255, 255, 255, 0.1); /* Matnning shaffofligi */
+    z-index: 0; /* Orqa fon sifatida ko'rinishi uchun */
+    pointer-events: none; /* Matn interaktiv bo'lmasligi uchun */
 }
 
-.home-content h3 {
+.outer h3 {
     font-size: 3.5rem;
     font-weight: 700;
 }
 
-.home-content h1 {
+.outer h1 {
     font-size: 6rem;
     font-weight: 800;
     color: var(--accent-color);
 }
 
-.home-content p {
+.outer p {
     font-size: 1.6rem;
     margin: 2rem 0;
 }
@@ -151,19 +175,172 @@ section {
     box-shadow: 0 0 15px var(--accent-color);
 }
 
+/* From Uiverse.io by JkHuger */ 
 .btn {
-    padding: 1.2rem 3rem;
-    background: var(--main-color);
-    border-radius: 50px;
-    font-size: 1.6rem;
-    color: #fff;
-    font-weight: 600;
-    transition: 0.4s ease;
+    width: 270px;
+    height: 50px;
+    left: 30%;
 }
 
-.btn:hover {
-    background: var(--accent-color);
-    box-shadow: 0 0 20px var(--accent-color);
+.btn label {
+    position: absolute;
+    height: 50px;
+    width: 270px;
+    border-radius: 10px;
+    overflow: hidden;
+    left: 29%;
+    cursor: pointer;
+}
+
+.btn label input {
+    display: none;
+}
+
+.btn label span {
+    position: absolute;
+    height: 50px;
+    width: 270px;
+    left: 50px;
+    line-height: 45px;
+    text-align: center;
+    color: #fff;
+    font-size: 16px;
+    background: #3F8EFC;
+    border-radius: 10px;
+}
+
+.btn label input:checked ~ span {
+    background: #87E544;
+    animation: downloadSuccess 3.1s ease;
+}
+
+.btn label span:after {
+    content: 'DOWNLOAD';
+    position: absolute;
+    width: 80%;
+    height: 100%;
+    left: 0%;
+}
+
+.btn label input:checked ~ span:after {
+    content: 'Thank you!';
+    animation: downloadState 3s;
+}
+
+.btn label span:before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+    opacity: 0;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.btn label input:checked ~ span:before {
+    animation: downloadProgress 3s cubic-bezier(.67, .13, .1, .81);
+}
+
+@keyframes downloadSuccess {
+    0%, 90% {
+        background: #3F8EFC;
+    }
+
+    100% {
+        background: #87E544;
+    }
+}
+
+@keyframes downloadState {
+    0%, 95% {
+        content: 'DOWNLOADING...';
+    }
+
+    100% {
+        content: 'Thank you for download!';
+    }
+}
+
+@keyframes downloadProgress {
+    0% {
+        width: 5%;
+        opacity: 1;
+    }
+
+    35% {
+        width: 17%;
+    }
+
+    64% {
+        width: 51%;
+    }
+
+    81% {
+        width: 70%;
+    }
+
+    90% {
+        width: 86%;
+        opacity: 1;
+    }
+
+    100% {
+        width: 100%;
+        opacity: 0;
+    }
+}
+
+/* Ekran kattaligiga qarab moslashuv */
+@media (max-width: 1200px) {
+    .btn {
+        width: 220px;
+        height: 45px;
+    }
+    .btn label {
+        height: 45px;
+        width: 220px;
+    }
+    .btn label span {
+        height: 45px;
+        width: 220px;
+        font-size: 14px;
+        line-height: 35px;
+    }
+}
+
+@media (max-width: 768px) {
+    .btn {
+        width: 180px;
+        height: 40px;
+    }
+    .btn label {
+        height: 40px;
+        width: 180px;
+    }
+    .btn label span {
+        height: 40px;
+        width: 180px;
+        font-size: 12px;
+        line-height: 30px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn {
+        width: 150px;
+        height: 35px;
+    }
+    .btn label {
+        height: 35px;
+        width: 150px;
+    }
+    .btn label span {
+        height: 35px;
+        width: 150px;
+        font-size: 10px;
+        line-height: 25px;
+    }
 }
 
 /* About Section */
@@ -172,7 +349,30 @@ section {
     align-items: center;
     justify-content: center;
     gap: 3rem;
-    background: var(--snd-bg-color);
+    /* From Uiverse.io by qhns3 */ 
+
+    width: 100%;
+    height: 100%;
+  
+    background: #000000;
+    --gap: 5em;
+    --line: 1px;
+    --color: rgba(255, 255, 255, 0.2);
+  
+    background-image: linear-gradient(
+        -90deg,
+        transparent calc(var(--gap) - var(--line)),
+        var(--color) calc(var(--gap) - var(--line) + 1px),
+        var(--color) var(--gap)
+      ),
+      linear-gradient(
+        0deg,
+        transparent calc(var(--gap) - var(--line)),
+        var(--color) calc(var(--gap) - var(--line) + 1px),
+        var(--color) var(--gap)
+      );
+    background-size: var(--gap) var(--gap);
+  
 }
 
 .about-img img {
@@ -190,7 +390,7 @@ section {
 .heading {
     font-size: 6rem;
     text-align: center;
-    color: var(--main-color);
+    color: var(--uzimni-rangim);
 }
 
 .about-content h3 {
@@ -209,6 +409,7 @@ section {
 }
 
 .services-container {
+    color: var(--main-color);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -218,7 +419,7 @@ section {
 
 .services-box {
     flex: 1 1 30rem;
-    background: #fff;
+    background: #ffffff;
     padding: 5rem 2rem 6rem;
     border-radius: 15px;
     text-align: center;
@@ -230,7 +431,7 @@ section {
 .services-box:hover {
     transform: translateY(-10px);
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-    border: 2px solid var(--main-color);
+    border: 2px solid var(--rasmni-rangi);
 }
 
 .services-box i {
@@ -241,9 +442,11 @@ section {
 .services-box h3 {
     font-size: 2.5rem;
     margin: 1rem 0;
+    color: var(--main-color);
 }
 
 .services-box p {
+    color: var(--main-color);
     font-size: 1.5rem;
     margin: 1rem 0 3rem;
 }
@@ -290,9 +493,11 @@ section {
 .testimonial-item h2 {
     font-size: 2.5rem;
     margin: 1rem 0;
+    color: var(--main-color);
 }
 
 .testimonial-item p {
+    color: var(--main-color);
     font-size: 1.6rem;
 }
 
@@ -328,7 +533,7 @@ section {
     width: 100%;
     padding: 1.5rem;
     font-size: 1.6rem;
-    color: var(--text-color);
+    color: var(--uzimni-rangim);
     background: #fff;
     border: 2px solid var(--main-color);
     border-radius: 10px;
@@ -392,10 +597,6 @@ section {
         background-size: cover;
         padding: 15rem 9%;
     }
-    .home-content {
-        background: rgba(0, 0, 0, 0.5);
-        max-width: 60rem;
-    }
     .services-container {
         gap: 3rem;
     }
@@ -427,21 +628,16 @@ section {
     .navbar a {
         padding: 1.5rem;
     }
-    .home {
-        background: url('assets/Profile.jpeg') no-repeat center / contain;
-        padding: 5rem 5%;
+    .outer {
+        padding: auto;
     }
-    .home-content {
-        background: rgba(0, 0, 0, 0.7);
-        padding: 3rem;
-    }
-    .home-content h1 {
+    .outer h1 {
         font-size: 4rem;
     }
-    .home-content h3 {
+    .outer h3 {
         font-size: 2.5rem;
     }
-    .home-content p {
+    .outer p {
         font-size: 1.4rem;
     }
     .about {
@@ -482,3 +678,153 @@ section {
         order: 4; /* Mavzu to‘rtinchi bo‘ladi */
     }
 }
+
+/* Ekran kattaligiga qarab moslashuv */
+@media (max-width: 1200px) {
+    .home::before {
+        font-size: 15rem; /* Matnni kichraytirish */
+    }
+    .outer h1 {
+        font-size: 5rem; /* H1 matnni kichraytirish */
+    }
+    .outer h3 {
+        font-size: 3rem; /* H3 matnni kichraytirish */
+    }
+}
+
+@media (max-width: 768px) {
+.home::before {
+    font-size: 10rem; /* Matnni yanada kichraytirish */
+    }
+    .outer h1 {
+        font-size: 4rem; /* H1 matnni kichraytirish */
+    }
+    .outer h3 {
+        font-size: 2.5rem; /* H3 matnni kichraytirish */
+    }
+    .outer p {
+        font-size: 1.4rem; /* Paragraf matnni kichraytirish */
+    }
+}
+
+@media (max-width: 480px) {
+    .home::before {
+        font-size: 6rem; /* Matnni juda kichraytirish */
+    }
+    .outer h1 {
+        font-size: 3rem; /* H1 matnni kichraytirish */
+}
+.outer h3 {
+        font-size: 2rem; /* H3 matnni kichraytirish */
+    }
+    .outer p {
+        font-size: 1.2rem; /* Paragraf matnni kichraytirish */
+    }
+}
+/* From Uiverse.io by Spacious74 */ 
+.outer {
+    width: 800px;
+    height: 450px;
+    border-radius: 10px;
+    padding: 1px;
+    background: radial-gradient(circle 230px at 0% 0%, #ffffff, #0c0d0d);
+    position: relative;
+    text-align: center;
+  }
+  
+  .dot {
+    width: 5px;
+    aspect-ratio: 1;
+    position: absolute;
+    background-color: #fff;
+    box-shadow: 0 0 10px #ffffff;
+    border-radius: 100px;
+    z-index: 2;
+    right: 10%;
+    top: 10%;
+    animation: moveDot 6s linear infinite;
+  }
+  
+  @keyframes moveDot {
+    0%,
+    100% {
+      top: 10%;
+      right: 10%;
+    }
+    25% {
+      top: 10%;
+      right: calc(100% - 35px);
+    }
+    50% {
+      top: calc(100% - 30px);
+      right: calc(100% - 35px);
+    }
+    75% {
+      top: calc(100% - 30px);
+      right: 10%;
+    }
+  }
+  
+  .card {
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    border-radius: 9px;
+    border: solid 1px #202222;
+    background-size: 20px 20px;
+    background: radial-gradient(circle 280px at 0% 0%, #444444, #0c0d0d);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+    color: #fff;
+  }
+  .ray {
+    width: 220px;
+    height: 45px;
+    border-radius: 100px;
+    position: absolute;
+    background-color: #c7c7c7;
+    opacity: 0.4;
+    box-shadow: 0 0 50px #fff;
+    filter: blur(10px);
+    transform-origin: 10%;
+    top: 0%;
+    left: 0;
+    transform: rotate(40deg);
+  }
+  
+  .card .text {
+    font-weight: bolder;
+    font-size: 4rem;
+    background: linear-gradient(45deg, #000000 4%, #fff, #000);
+    background-clip: text;
+    color: transparent;
+  }
+  
+  .line {
+    width: 100%;
+    height: 1px;
+    position: absolute;
+    background-color: #2c2c2c;
+  }
+  .topl {
+    top: 10%;
+    background: linear-gradient(90deg, #888888 30%, #1d1f1f 70%);
+  }
+  .bottoml {
+    bottom: 10%;
+  }
+  .leftl {
+    left: 10%;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(180deg, #747474 30%, #222424 70%);
+  }
+  .rightl {
+    right: 10%;
+    width: 1px;
+    height: 100%;
+  }
+  
