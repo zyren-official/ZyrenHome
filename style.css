@@ -188,7 +188,7 @@ section {
     width: 270px;
     border-radius: 10px;
     overflow: hidden;
-    left: 29%;
+    left: 20%;
     cursor: pointer;
 }
 
@@ -596,6 +596,9 @@ section {
     .home {
         background-size: cover;
         padding: 15rem 9%;
+    }
+    .btn label {
+        left: 29%;
     }
     .services-container {
         gap: 3rem;
